@@ -1,6 +1,6 @@
 ## Welcome to CS2800!
 
-I want to make change this line in the main branch.
+Don't fight. Let's put both changes together!
 
 This module is one of the most exciting and interesting module at RHUL.
 
