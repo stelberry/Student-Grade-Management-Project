@@ -12,8 +12,11 @@ public class Movie {
 
   List<Rate> rates;
 
+  List<PlayTime> playtimes;
+
   public Movie() {
     this.rates = new ArrayList<Rate>();
+    this.playtimes = new ArrayList<PlayTime>();
   }
 
 
@@ -36,6 +39,17 @@ public class Movie {
 
   public void addRate(Rate rate) {
     this.rates.add(rate);
+
+  }
+
+
+  public List<PlayTime> getPlayTime() {
+    return this.playtimes;
+  }
+
+
+  public void addPlayTime(PlayTime playtime) {
+    this.playtimes.add(playtime);
 
   }
 

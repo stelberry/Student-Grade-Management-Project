@@ -25,4 +25,23 @@ public class MovieTest {
       movie.getAverageRate();
     });
   }
+
+  @Test
+  void getPlayTimeTest() {
+
+    Movie movie = new Movie();
+
+    PlayTime playtime = new PlayTime();
+    playtime.setWeekday(Weekday.MONDAY);
+    playtime.setStartHour(14);
+    playtime.setStartMinute(0);
+    playtime.setDuration(90);
+    movie.addPlayTime(playtime);
+
+
+    assertEquals(Weekday.MONDAY, movie.getPlayTime().get(0).getWeekday());
+    assertEquals(14, movie.getPlayTime().get(0).getStartHour());
+    assertEquals(0, movie.getPlayTime().get(0).getStartMinute());
+    assertEquals(90, movie.getPlayTime().get(0).getDuration());
+  }
 }
