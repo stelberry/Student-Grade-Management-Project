@@ -8,7 +8,7 @@ import uk.ac.rhul.cs2800.exception.NoGradeAvailableException;
 public class StudentTest {
 
   @Test
-  void computeAverage() throws NoGradeAvailableException {
+  void computeAverageTest() throws NoGradeAvailableException {
     // Test 1
     Student student = new Student();
     student.addGrade(new Grade(5));
@@ -27,5 +27,15 @@ public class StudentTest {
       student.computeAverage();
     });
   }
+  
+  @Test
+  void getGradeTest() throws NoGradeAvailableException {
+    // Test5
+    Student student = new Student();
+
+    Module module = new Module();
+    assertEquals(80, student.getGrade(module).getScore());
+  }
+
 
 }
