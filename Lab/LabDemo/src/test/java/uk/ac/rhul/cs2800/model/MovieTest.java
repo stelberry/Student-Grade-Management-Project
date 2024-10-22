@@ -3,6 +3,7 @@ package uk.ac.rhul.cs2800.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
+import uk.ac.rhul.cs2800.exception.NoPlayTimeException;
 import uk.ac.rhul.cs2800.exception.NoRateAvailableException;
 
 public class MovieTest {
@@ -27,7 +28,7 @@ public class MovieTest {
   }
 
   @Test
-  void getPlayTimeTest() {
+  void getPlayTimeTest() throws NoPlayTimeException {
 
     Movie movie = new Movie();
 
@@ -39,9 +40,19 @@ public class MovieTest {
     movie.addPlayTime(playtime);
 
 
-    assertEquals(Weekday.MONDAY, movie.getPlayTime().get(0).getWeekday());
-    assertEquals(14, movie.getPlayTime().get(0).getStartHour());
-    assertEquals(0, movie.getPlayTime().get(0).getStartMinute());
-    assertEquals(90, movie.getPlayTime().get(0).getDuration());
+    PlayTime playtimeInMovie = movie.getPlayTime().get(0);
+    assertEquals(Weekday.MONDAY, playtimeInMovie.getWeekday());
+    assertEquals(14, playtimeInMovie.getStartHour());
+    assertEquals(0, playtimeInMovie.getStartMinute());
+    assertEquals(90, playtimeInMovie.getDuration());
+  }
+  
+  @Test
+  void noPlayTimeTest() {
+    assertThrows(NoPlayTimeException.class, () -> {
+      Movie movie = new Movie();
+      movie.getPlayTime();
+    });
+
   }
 }
