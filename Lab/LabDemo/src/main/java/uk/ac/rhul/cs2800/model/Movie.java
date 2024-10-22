@@ -2,6 +2,7 @@ package uk.ac.rhul.cs2800.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import uk.ac.rhul.cs2800.exception.NoPlayTimeException;
 import uk.ac.rhul.cs2800.exception.NoRateAvailableException;
 
 
@@ -43,7 +44,16 @@ public class Movie {
   }
 
 
-  public List<PlayTime> getPlayTime() {
+  /**
+   * Returns a list of play times.
+   *
+   * @return a list of play times.
+   * @throws NoPlayTimeException if there is no play times in the object.
+   */
+  public List<PlayTime> getPlayTime() throws NoPlayTimeException {
+    if (this.playtimes.size() < 1) {
+      throw new NoPlayTimeException();
+    }
     return this.playtimes;
   }
 
