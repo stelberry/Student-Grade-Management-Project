@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class GradeTest {
   @Test
-  void GradeTest() {
+  void gradeTest() {
     // Test3
     Grade grade = new Grade();
     grade.setScore(3);
@@ -13,7 +13,7 @@ public class GradeTest {
   }
 
   @Test
-  void GradeTestwithNewConstructor() {
+  void gradeTestwithNewConstructor() {
     // Test4
     Grade grade = new Grade(4);
     assertEquals(4, grade.getScore());

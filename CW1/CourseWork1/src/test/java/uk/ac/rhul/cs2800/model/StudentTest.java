@@ -32,8 +32,8 @@ public class StudentTest {
   void getGradeTest() throws NoGradeAvailableException {
     // Test5
     Student student = new Student();
-
     Module module = new Module();
+    Grade grade = new Grade(80);
     assertEquals(80, student.getGrade(module).getScore());
   }
 
