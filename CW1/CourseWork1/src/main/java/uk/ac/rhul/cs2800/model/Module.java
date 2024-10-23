@@ -6,6 +6,17 @@ public class Module {
   String name;
   boolean mnc;
 
+  public Module() {
+
+  }
+
+  public Module(int code, String name, boolean mnc) {
+    this.code = code;
+    this.name = name;
+    this.mnc = mnc;
+  }
+
+
   public int getCode() {
     return code;
   }

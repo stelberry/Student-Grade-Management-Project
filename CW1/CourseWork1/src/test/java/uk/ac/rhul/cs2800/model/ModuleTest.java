@@ -1,13 +1,14 @@
 package uk.ac.rhul.cs2800.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class ModuleTest {
 
   @Test
   void moduleTest() {
-    // Test6
+    // Test7
     Module module = new Module();
     module.setCode(101);
     module.setName("Software Engineering");
@@ -15,6 +16,15 @@ public class ModuleTest {
 
     assertEquals(101, module.getCode());
     assertEquals("Software Engineering", module.getName());
-    assertEquals(true, module.isMnc());
+    assertTrue(module.isMnc());
+  }
+
+  @Test
+  void moduleTestwithConstructor(){
+    // Test8
+    Module module = new Module(101, "Software Engineering", true);
+    assertEquals(101, module.getCode());
+    assertEquals("Software Engineering", module.getName());
+    assertTrue(module.isMnc());
   }
 }
