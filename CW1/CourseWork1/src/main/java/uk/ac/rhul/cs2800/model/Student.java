@@ -25,7 +25,7 @@ public class Student {
    * @throws NoGradeAvailableException if there is no grade available.
    */
   public Float computeAverage() throws NoGradeAvailableException {
-    if (grades.size() < 1) {
+    if (grades.isEmpty()) {
       throw new NoGradeAvailableException();
     }
     Float sum = 0.0f;
@@ -36,15 +36,22 @@ public class Student {
   }
 
   public void addGrade(Grade grade) {
+
     this.grades.add(grade);
   }
 
   public Grade getGrade(Module module) throws NoGradeAvailableException {
-    int i = modules.indexOf(module);
-    if (grades.size() < 1) {
+    int moduleIndex = modules.indexOf(module);
+    if (moduleIndex == -1 || grades.isEmpty()) {
       throw new NoGradeAvailableException();
     }
-    return grades.get(i);
+    return grades.get(moduleIndex);
   }
+
+  public void registerModule(Module module) {
+    modules.add(module);
+
+  }
+
 
 }

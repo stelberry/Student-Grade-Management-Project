@@ -20,7 +20,7 @@ public class StudentTest {
   }
 
   @Test
-  void computAverageTestwithEmptyGrades() {
+  void computeAverageTestwithEmptyGrades() {
     // Test 2
     assertThrows(NoGradeAvailableException.class, () -> {
       Student student = new Student();
@@ -28,12 +28,27 @@ public class StudentTest {
     });
   }
   
+}
+
+  void addGradeTest() throws NoGradeAvailableException {
+    // Test 5: Ensure grades can be added and retrieved properly.
+    Student student = new Student();
+    Grade grade = new Grade(7);
+    student.addGrade(grade);
+
+    assertEquals(7, grade);
+  }
+
   @Test
   void getGradeTest() throws NoGradeAvailableException {
-    // Test5
+    // Test 6
     Student student = new Student();
-    Module module = new Module();
+    Module module = new Module(101, "Software Engineering", true);
     Grade grade = new Grade(80);
+    student.addGrade(grade);
+
+    student.registeraterModule(module);
+
     assertEquals(80, student.getGrade(module).getScore());
   }
 
