@@ -9,7 +9,42 @@ import uk.ac.rhul.cs2800.exception.NoRegistrationException;
  * A class represents student.
  */
 public class Student {
+
+  public Long id;
+  public String firstName;
+  public String lastName;
+  public String username;
+  public String email;
+
   List<Registration> registrations = new ArrayList<>();
+
+  public Student(Long id, String firstName, String lastName, String username, String email) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.username = username;
+    this.email = email;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public String getEmail() {
+    return email;
+  }
 
   /**
    * It returns an average grade value.
