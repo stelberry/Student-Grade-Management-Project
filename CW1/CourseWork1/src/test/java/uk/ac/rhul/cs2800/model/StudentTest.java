@@ -11,7 +11,7 @@ public class StudentTest {
   @Test
   void computeAverageTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 1
-    Student student = new Student();
+    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Grade grade1 = new Grade(80);
     Grade grade2 = new Grade(80);
     Module module1 = new Module(101, "Software Engineering", true);
@@ -27,10 +27,10 @@ public class StudentTest {
   }
 
   @Test
-  void computeAverageTestwithEmptyGradesTest() {
+  void computeAveragewithEmptyGradesTest() {
     // Test 2
     assertThrows(NoGradeAvailableException.class, () -> {
-      Student student = new Student();
+      Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
       student.computeAverage();
     });
   }
@@ -38,7 +38,7 @@ public class StudentTest {
   @Test
   void addGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 5
-    Student student = new Student();
+    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Module module = new Module(101, "Software Engineering", true);
     Grade grade = new Grade(80);
 
@@ -51,7 +51,7 @@ public class StudentTest {
   @Test
   void getGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 6
-    Student student = new Student();
+    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Module module = new Module(101, "Software Engineering", true);
     Grade grade = new Grade(80);
     student.registerModule(module);
@@ -60,5 +60,22 @@ public class StudentTest {
     assertEquals(80, student.getGrade(module).getScore());
   }
 
-
+  @Test
+  void computeAveragewithEmptyRegistrationTest() {
+    //Test 7
+    assertThrows(NoRegistrationException.class, () -> {
+      Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+      student.computeAverage();
+    });
+  }
+@Test
+void studentTest() {
+  //Test 8
+  Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+  assertEquals(101064264L, student.getId());
+  assertEquals("Yoon", student.getFirstName());
+  assertEquals("Ei", student.getLastName());
+  assertEquals("yoonei", student.getUsername());
+  assertEquals("yoonei@gmail.com", student.getEmail());
+}
 }
