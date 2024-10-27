@@ -22,4 +22,8 @@ public class Registration {
     this.grade = grade;
   }
 
+  public void setModule(Module module) {
+    this.module = module;
+  }
+
 }
