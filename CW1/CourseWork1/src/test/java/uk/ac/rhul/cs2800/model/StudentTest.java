@@ -13,7 +13,7 @@ public class StudentTest {
     // Test 1
     Student student = new Student();
     Grade grade1 = new Grade(80);
-    Grade grade2 = new Grade(90);
+    Grade grade2 = new Grade(80);
     Module module1 = new Module(101, "Software Engineering", true);
     Module module2 = new Module(102, "Databases", false);
     
@@ -22,7 +22,7 @@ public class StudentTest {
 
     student.addGrade(grade1, module1);
     student.addGrade(grade2, module2);
-    assertEquals(5.0f, student.computeAverage());
+    assertEquals(80.0f, student.computeAverage());
 
   }
 
@@ -37,12 +37,14 @@ public class StudentTest {
   
   @Test
   void addGradeTest() throws NoGradeAvailableException, NoRegistrationException {
-    // Test 5: Ensure grades can be added and retrieved properly.
+    // Test 5
     Student student = new Student();
     Module module = new Module(101, "Software Engineering", true);
     Grade grade = new Grade(80);
+
+    student.registerModule(module);
     student.addGrade(grade, module);
-    assertEquals(8, student.getGrade(module).getScore());
+    assertEquals(80, student.getGrade(module).getScore());
 
   }
 
@@ -52,9 +54,8 @@ public class StudentTest {
     Student student = new Student();
     Module module = new Module(101, "Software Engineering", true);
     Grade grade = new Grade(80);
-    student.addGrade(grade);
-
     student.registerModule(module);
+    student.addGrade(grade, module);
 
     assertEquals(80, student.getGrade(module).getScore());
   }
