@@ -109,21 +109,21 @@ public class StudentTest {
     assertEquals(75.0f, student.computeAverage());
   }
 
-@Test
-void computeAverageWithMultipleRegistrationsButNoGradesTest() {
-  // Test 14
-  Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-  Module module1 = new Module(101, "Software Engineering", true);
-  Module module2 = new Module(102, "Databases", false);
+  @Test
+  void computeAverageWithMultipleRegistrationsButNoGradesTest() {
+    // Test 14
+    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+    Module module1 = new Module(101, "Software Engineering", true);
+    Module module2 = new Module(102, "Databases", false);
 
-  student.registerModule(module1);
-  student.registerModule(module2);
+    student.registerModule(module1);
+    student.registerModule(module2);
 
-  assertThrows(NoGradeAvailableException.class, () -> {
+    assertThrows(NoGradeAvailableException.class, () -> {
 
-    student.computeAverage();
-  });
-}
+      student.computeAverage();
+    });
+  }
 
 @Test
 void getGradeWithMultipleRegistrationsTest()

@@ -1,5 +1,8 @@
 package uk.ac.rhul.cs2800.model;
 
+/**
+ * A class represents a student's registration in a specific module.
+ */
 public class Registration {
 
   private Module module;

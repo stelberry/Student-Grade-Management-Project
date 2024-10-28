@@ -1,5 +1,8 @@
 package uk.ac.rhul.cs2800.model;
 
+/**
+ * A class represents a student module.
+ */
 public class Module {
 
   int code;
@@ -10,6 +13,13 @@ public class Module {
 
   }
 
+  /**
+   * Constructs a Module with the specified code, name, and mandatory status.
+   *
+   * @param code the unique code of the module
+   * @param name the name of the module
+   * @param mnc true if the module is mandatory non-condonable, false otherwise
+   */
   public Module(int code, String name, boolean mnc) {
     this.code = code;
     this.name = name;
