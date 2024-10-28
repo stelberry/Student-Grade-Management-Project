@@ -53,15 +53,19 @@ public class Student {
    * @throws NoGradeAvailableException if there is no grade available.
    */
   public Float computeAverage() throws NoGradeAvailableException {
-
-    if (grades.isEmpty()) {
+    float sum = 0;
+    int count = 0;
+    for (Registration registration : registrations) {
+      Grade grade = registration.getGrade();
+      if (grade != null) {
+        sum += grade.getScore();
+        count++;
+      }
+    }
+    if (count == 0) {
       throw new NoGradeAvailableException();
     }
-    Float sum = 0.0f;
-    for (Grade grade : grades) {
-      sum += grade.getScore();
-    }
-    return sum / this.grades.size();
+    return sum / count;
   }
 
   public void addGrade(Grade grade, Module module) throws NoRegistrationException {
