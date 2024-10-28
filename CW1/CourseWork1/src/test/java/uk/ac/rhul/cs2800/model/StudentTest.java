@@ -109,5 +109,52 @@ void computeAverageWithOneGradeTest() throws NoGradeAvailableException, NoRegist
   assertEquals(75.0f, student.computeAverage());
 }
 
+@Test
+void computeAverageWithMultipleRegistrationsButNoGradesTest() {
+  // Test 14
+  Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+  Module module1 = new Module(101, "Software Engineering", true);
+  Module module2 = new Module(102, "Databases", false);
+
+  student.registerModule(module1);
+  student.registerModule(module2);
+
+  assertThrows(NoGradeAvailableException.class, () -> {
+
+    student.computeAverage();
+  });
+}
+
+@Test
+void getGradeWithMultipleRegistrationsTest()
+    throws NoRegistrationException, NoGradeAvailableException {
+  // Test 15
+  Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+  Module module1 = new Module(101, "Software Engineering", true);
+  Module module2 = new Module(102, "Databases", false);
+  Grade grade = new Grade(85);
+
+  student.registerModule(module1);
+  student.registerModule(module2);
+
+  student.addGrade(grade, module1);
+
+  assertEquals(85, student.getGrade(module1).getScore());
+
+  assertThrows(NoGradeAvailableException.class, () -> {
+    student.getGrade(module2);
+  });
+}
+
+@Test
+void getGradeWithNullModuleTest() {
+  // Test 16
+  assertThrows(NoGradeAvailableException.class, () -> {
+    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+
+    student.getGrade(null);
+  });
+}
+
 
 }
