@@ -54,6 +54,7 @@ public class StudentTest {
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Module module = new Module(101, "Software Engineering", true);
     Grade grade = new Grade(80);
+
     student.registerModule(module);
     student.addGrade(grade, module);
 
@@ -62,7 +63,7 @@ public class StudentTest {
 
 @Test
 void studentTest() {
-  // Test 7
+  // Test 10
   Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
   assertEquals(101064264L, student.getId());
   assertEquals("Yoon", student.getFirstName());
@@ -73,26 +74,40 @@ void studentTest() {
 
 @Test
 void addGradeToUnregisteredModuleTest() {
-  // Test 8
-  Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-  Module module = new Module(101, "Software Engineering", true);
-  Grade grade = new Grade(80);
-
+  // Test 11
   assertThrows(NoRegistrationException.class, () -> {
+    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+    Module module = new Module(101, "Software Engineering", true);
+    Grade grade = new Grade(80);
+
     student.addGrade(grade, module);
   });
 }
 
 @Test
 void getGradeWithEmptyGradeTest() {
-  // Test 9
+  // Test 12
   Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
   Module module = new Module(101, "Software Engineering", true);
-
   student.registerModule(module);
 
   assertThrows(NoGradeAvailableException.class, () -> {
     student.getGrade(module);
   });
 }
+
+@Test
+void computeAverageWithOneGradeTest() throws NoGradeAvailableException, NoRegistrationException {
+  // Test 13
+  Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+  Module module = new Module(101, "Software Engineering", true);
+  Grade grade = new Grade(75);
+
+  student.registerModule(module);
+  student.addGrade(grade, module);
+
+  assertEquals(75.0f, student.computeAverage());
+}
+
+
 }
