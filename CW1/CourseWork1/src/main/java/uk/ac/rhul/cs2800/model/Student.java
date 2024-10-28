@@ -18,6 +18,15 @@ public class Student {
 
   List<Registration> registrations = new ArrayList<>();
 
+  /**
+   * Constructs a new Student with details.
+   *
+   * @param id the ID of the student
+   * @param firstName the first name of the student
+   * @param lastName the last name of the student
+   * @param username the username of the student
+   * @param email the email of the student
+   */
   public Student(Long id, String firstName, String lastName, String username, String email) {
     this.id = id;
     this.firstName = firstName;
@@ -49,8 +58,8 @@ public class Student {
   /**
    * It returns an average grade value.
    *
-   * @return average grade in float.
-   * @throws NoGradeAvailableException if there is no grade available.
+   * @return average grade in float
+   * @throws NoGradeAvailableException if there is no grade available
    */
   public Float computeAverage() throws NoGradeAvailableException {
     float sum = 0;
@@ -68,6 +77,13 @@ public class Student {
     return sum / count;
   }
 
+  /**
+   * Adds a grade to a specified module for the student.
+   *
+   * @param grade the grade to be added
+   * @param module the module to which the grade should be added
+   * @throws NoRegistrationException if the student is not registered in the specified module
+   */
   public void addGrade(Grade grade, Module module) throws NoRegistrationException {
     Registration registration = null;
     for (Registration reg : registrations) {
@@ -84,6 +100,13 @@ public class Student {
     registration.setGrade(grade);
   }
 
+  /**
+   * Gets the grade of the student for a specified module.
+   *
+   * @param module the module for which the grade is requested.
+   * @return the grade for the specified module
+   * @throws NoGradeAvailableException if there is no grade available for the specified module
+   */
   public Grade getGrade(Module module) throws NoGradeAvailableException {
     for (Registration registration : registrations) {
       if (registration.getModule().equals(module)) {
