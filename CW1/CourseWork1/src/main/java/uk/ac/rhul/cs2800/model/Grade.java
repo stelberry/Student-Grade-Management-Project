@@ -6,13 +6,15 @@ package uk.ac.rhul.cs2800.model;
 public class Grade {
 
   int score;
+  public Module module;
 
   public Grade() {
 
   }
 
-  public Grade(int score) {
+  public Grade(int score, Module module) {
     this.score = score;
+    this.module = module;
   }
 
   public int getScore() {
@@ -21,6 +23,14 @@ public class Grade {
 
   public void setScore(int score) {
     this.score = score;
+  }
+
+  public void setModule(Module module) {
+    this.module = module;
+  }
+
+  public Module getModule() {
+    return module;
   }
 
 }

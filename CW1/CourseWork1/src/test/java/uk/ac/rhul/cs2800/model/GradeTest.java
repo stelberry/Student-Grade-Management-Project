@@ -8,15 +8,20 @@ public class GradeTest {
   void gradeTest() {
     // Test3
     Grade grade = new Grade();
-    grade.setScore(3);
-    assertEquals(3, grade.getScore());
+    Module module = new Module("101", "Software Engineering", true);
+    grade.setScore(60);
+    grade.setModule(module);
+    assertEquals(60, grade.getScore());
+    assertEquals(module, grade.getModule());
   }
 
   @Test
   void gradeTestwithNewConstructor() {
     // Test4
-    Grade grade = new Grade(4);
-    assertEquals(4, grade.getScore());
+    Module module = new Module("101", "Software Engineering", true);
+    Grade grade = new Grade(80, module);
+    assertEquals(80, grade.getScore());
+    assertEquals(module, grade.getModule());
   }
 
 }
