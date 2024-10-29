@@ -10,20 +10,20 @@ public class ModuleTest {
   void moduleTest() {
     // Test7
     Module module = new Module();
-    module.setCode(101);
+    module.setCode("101");
     module.setName("Software Engineering");
     module.setMnc(true);
 
-    assertEquals(101, module.getCode());
+    assertEquals("101", module.getCode());
     assertEquals("Software Engineering", module.getName());
     assertTrue(module.isMnc());
   }
 
   @Test
-  void moduleTestwithConstructor(){
+  void moduleTestwithConstructor() {
     // Test8
-    Module module = new Module(101, "Software Engineering", true);
-    assertEquals(101, module.getCode());
+    Module module = new Module("101", "Software Engineering", true);
+    assertEquals("101", module.getCode());
     assertEquals("Software Engineering", module.getName());
     assertTrue(module.isMnc());
   }

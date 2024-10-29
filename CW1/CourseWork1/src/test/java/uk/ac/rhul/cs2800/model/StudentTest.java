@@ -12,16 +12,16 @@ public class StudentTest {
   void computeAverageTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 1
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Grade grade1 = new Grade(80);
-    Grade grade2 = new Grade(80);
-    Module module1 = new Module(101, "Software Engineering", true);
-    Module module2 = new Module(102, "Databases", false);
-    
+    Module module1 = new Module("101", "Software Engineering", true);
+    Module module2 = new Module("102", "Databases", false);
+    Grade grade1 = new Grade(80, module1);
+    Grade grade2 = new Grade(80, module2);
+
     student.registerModule(module1);
     student.registerModule(module2);
 
-    student.addGrade(grade1, module1);
-    student.addGrade(grade2, module2);
+    student.addGrade(grade1);
+    student.addGrade(grade2);
     assertEquals(80.0f, student.computeAverage());
 
   }
@@ -39,11 +39,11 @@ public class StudentTest {
   void addGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 5
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module = new Module(101, "Software Engineering", true);
-    Grade grade = new Grade(80);
+    Module module = new Module("101", "Software Engineering", true);
+    Grade grade = new Grade(80, module);
 
     student.registerModule(module);
-    student.addGrade(grade, module);
+    student.addGrade(grade);
     assertEquals(80, student.getGrade(module).getScore());
 
   }
@@ -52,11 +52,11 @@ public class StudentTest {
   void getGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 6
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module = new Module(101, "Software Engineering", true);
-    Grade grade = new Grade(80);
+    Module module = new Module("101", "Software Engineering", true);
+    Grade grade = new Grade(80, module);
 
     student.registerModule(module);
-    student.addGrade(grade, module);
+    student.addGrade(grade);
 
     assertEquals(80, student.getGrade(module).getScore());
   }
@@ -77,10 +77,10 @@ public class StudentTest {
     // Test 11
     assertThrows(NoRegistrationException.class, () -> {
       Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-      Module module = new Module(101, "Software Engineering", true);
-      Grade grade = new Grade(80);
+      Module module = new Module("101", "Software Engineering", true);
+      Grade grade = new Grade(80, module);
 
-      student.addGrade(grade, module);
+      student.addGrade(grade);
     });
   }
 
@@ -88,7 +88,7 @@ public class StudentTest {
   void getGradeWithEmptyGradeTest() {
     // Test 12
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module = new Module(101, "Software Engineering", true);
+    Module module = new Module("101", "Software Engineering", true);
     student.registerModule(module);
 
     assertThrows(NoGradeAvailableException.class, () -> {
@@ -100,11 +100,11 @@ public class StudentTest {
   void computeAverageWithOneGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 13
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module = new Module(101, "Software Engineering", true);
-    Grade grade = new Grade(75);
+    Module module = new Module("101", "Software Engineering", true);
+    Grade grade = new Grade(75, module);
 
     student.registerModule(module);
-    student.addGrade(grade, module);
+    student.addGrade(grade);
 
     assertEquals(75.0f, student.computeAverage());
   }
@@ -113,8 +113,8 @@ public class StudentTest {
   void computeAverageWithMultipleRegistrationsButNoGradesTest() {
     // Test 14
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module1 = new Module(101, "Software Engineering", true);
-    Module module2 = new Module(102, "Databases", false);
+    Module module1 = new Module("101", "Software Engineering", true);
+    Module module2 = new Module("102", "Databases", false);
 
     student.registerModule(module1);
     student.registerModule(module2);
@@ -125,36 +125,37 @@ public class StudentTest {
     });
   }
 
-@Test
-void getGradeWithMultipleRegistrationsTest()
-    throws NoRegistrationException, NoGradeAvailableException {
-  // Test 15
-  Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-  Module module1 = new Module(101, "Software Engineering", true);
-  Module module2 = new Module(102, "Databases", false);
-  Grade grade = new Grade(85);
-
-  student.registerModule(module1);
-  student.registerModule(module2);
-
-  student.addGrade(grade, module1);
-
-  assertEquals(85, student.getGrade(module1).getScore());
-
-  assertThrows(NoGradeAvailableException.class, () -> {
-    student.getGrade(module2);
-  });
-}
-
-@Test
-void getGradeWithNullModuleTest() {
-  // Test 16
-  assertThrows(NoGradeAvailableException.class, () -> {
+  @Test
+  void getGradeWithMultipleRegistrationsTest()
+      throws NoRegistrationException, NoGradeAvailableException {
+    // Test 15
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+    Module module1 = new Module("101", "Software Engineering", true);
+    Module module2 = new Module("102", "Databases", false);
+    Grade grade = new Grade(85, module1);
 
-    student.getGrade(null);
-  });
+    student.registerModule(module1);
+    student.registerModule(module2);
+
+    student.addGrade(grade);
+
+    assertEquals(85, student.getGrade(module1).getScore());
+
+    assertThrows(NoGradeAvailableException.class, () -> {
+      student.getGrade(module2);
+    });
+  }
+
+  @Test
+  void getGradeWithNullModuleTest() {
+    // Test 16
+    assertThrows(NoGradeAvailableException.class, () -> {
+      Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+
+      student.getGrade(null);
+    });
+  }
+
+
 }
 
-
-}

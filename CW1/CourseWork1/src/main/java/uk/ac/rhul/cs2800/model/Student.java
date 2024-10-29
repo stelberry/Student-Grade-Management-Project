@@ -1,7 +1,9 @@
 package uk.ac.rhul.cs2800.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import uk.ac.rhul.cs2800.exception.NoGradeAvailableException;
 import uk.ac.rhul.cs2800.exception.NoRegistrationException;
 
@@ -17,6 +19,8 @@ public class Student {
   public String email;
 
   List<Registration> registrations = new ArrayList<>();
+  private Map<Module, Grade> gradeMap = new HashMap<>();
+
 
   /**
    * Constructs a new Student with details.
@@ -64,13 +68,11 @@ public class Student {
   public Float computeAverage() throws NoGradeAvailableException {
     float sum = 0;
     int count = 0;
-    for (Registration registration : registrations) {
-      Grade grade = registration.getGrade();
-      if (grade != null) {
-        sum += grade.getScore();
-        count++;
-      }
+    for (Grade grade : gradeMap.values()) {
+      sum += grade.getScore();
+      count++;
     }
+
     if (count == 0) {
       throw new NoGradeAvailableException();
     }
@@ -81,23 +83,17 @@ public class Student {
    * Adds a grade to a specified module for the student.
    *
    * @param grade the grade to be added
-   * @param module the module to which the grade should be added
    * @throws NoRegistrationException if the student is not registered in the specified module
    */
-  public void addGrade(Grade grade, Module module) throws NoRegistrationException {
-    Registration registration = null;
-    for (Registration reg : registrations) {
-      if (reg.getModule().equals(module)) {
-        registration = reg;
-        break;
+  public void addGrade(Grade grade) throws NoRegistrationException {
+    Module module = grade.getModule();
+    for (Registration registration : registrations) {
+      if (registration.getModule().equals(module)) {
+        gradeMap.put(module, grade);
+        return;
       }
     }
-
-    if (registration == null) {
-      throw new NoRegistrationException();
-    }
-
-    registration.setGrade(grade);
+    throw new NoRegistrationException();
   }
 
   /**
@@ -120,10 +116,7 @@ public class Student {
   }
 
   public void registerModule(Module module) {
-    registrations.add(new Registration(module));
+    registrations.add(new Registration(module, this));
 
   }
 }
-
-
-

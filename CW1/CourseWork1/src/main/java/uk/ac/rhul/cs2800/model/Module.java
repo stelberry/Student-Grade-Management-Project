@@ -5,7 +5,7 @@ package uk.ac.rhul.cs2800.model;
  */
 public class Module {
 
-  int code;
+  String code;
   String name;
   boolean mnc;
 
@@ -20,18 +20,18 @@ public class Module {
    * @param name the name of the module
    * @param mnc true if the module is mandatory non-condonable, false otherwise
    */
-  public Module(int code, String name, boolean mnc) {
+  public Module(String code, String name, boolean mnc) {
     this.code = code;
     this.name = name;
     this.mnc = mnc;
   }
 
 
-  public int getCode() {
+  public String getCode() {
     return code;
   }
 
-  public void setCode(int code) {
+  public void setCode(String code) {
     this.code = code;
   }
 
@@ -51,3 +51,4 @@ public class Module {
     this.mnc = mnc;
   }
 }
+
