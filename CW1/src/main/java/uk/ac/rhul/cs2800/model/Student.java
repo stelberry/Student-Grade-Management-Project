@@ -21,7 +21,6 @@ public class Student {
   List<Registration> registrations = new ArrayList<>();
   Map<Module, Grade> gradeMap = new HashMap<>();
 
-
   /**
    * Constructs a new Student with details.
    *
@@ -36,6 +35,26 @@ public class Student {
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
+    this.email = email;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public void setEmail(String email) {
     this.email = email;
   }
 

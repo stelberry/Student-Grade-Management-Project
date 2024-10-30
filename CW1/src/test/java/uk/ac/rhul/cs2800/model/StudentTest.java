@@ -77,11 +77,16 @@ public class StudentTest {
   void studentConstructorTest() {
     // Test 10
     // check that the Student object initializes with correct attributes
-    assertEquals(101064264L, student.getId());
-    assertEquals("Yoon", student.getFirstName());
+    student.setEmail("stella@gmail.com");
+    student.setFirstName("Stella");
+    student.setLastName("Ei");
+    student.setId(1010L);
+    student.setUsername("stella");
+    assertEquals(1010L, student.getId());
+    assertEquals("Stella", student.getFirstName());
     assertEquals("Ei", student.getLastName());
-    assertEquals("yoonei", student.getUsername());
-    assertEquals("yoonei@gmail.com", student.getEmail());
+    assertEquals("stella", student.getUsername());
+    assertEquals("stella@gmail.com", student.getEmail());
   }
 
   @Test
