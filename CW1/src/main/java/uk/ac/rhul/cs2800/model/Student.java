@@ -1,9 +1,7 @@
 package uk.ac.rhul.cs2800.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import uk.ac.rhul.cs2800.exception.NoGradeAvailableException;
 import uk.ac.rhul.cs2800.exception.NoRegistrationException;
 
@@ -12,14 +10,14 @@ import uk.ac.rhul.cs2800.exception.NoRegistrationException;
  */
 public class Student {
 
-  public Long id;
-  public String firstName;
-  public String lastName;
-  public String username;
-  public String email;
+  private Long id;
+  private String firstName;
+  private String lastName;
+  private String username;
+  private String email;
 
   List<Registration> registrations = new ArrayList<>();
-  Map<Module, Grade> gradeMap = new HashMap<>();
+  List<Grade> grades = new ArrayList<>();
 
   /**
    * Constructs a new Student with details.
@@ -87,7 +85,7 @@ public class Student {
   public Float computeAverage() throws NoGradeAvailableException {
     float sum = 0;
     int count = 0;
-    for (Grade grade : gradeMap.values()) {
+    for (Grade grade : grades) {
       sum += grade.getScore();
       count++;
     }
@@ -110,7 +108,7 @@ public class Student {
     for (Registration registration : registrations) {
 
       if (registration.getModule().equals(module)) {
-        gradeMap.put(module, grade);
+        grades.add(grade);
         return;
       }
     }
@@ -126,16 +124,16 @@ public class Student {
    * @throws NoGradeAvailableException if there is no grade available
    */
   public Grade getGrade(Module module) throws NoGradeAvailableException {
-    Grade grade = gradeMap.get(module);
-
-    if (grade == null) {
-      throw new NoGradeAvailableException("No grades available for the student.");
+    for (Grade grade : grades) {
+      if (grade.getModule().equals(module)) {
+        return grade;
+      }
     }
-    return grade;
+    throw new NoGradeAvailableException("No grades available for the student.");
   }
 
   public void registerModule(Module module) {
-    registrations.add(new Registration(module, this));
+    registrations.add(new Registration(module));
 
   }
 }

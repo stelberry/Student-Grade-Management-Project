@@ -5,9 +5,9 @@ package uk.ac.rhul.cs2800.model;
  */
 public class Module {
 
-  String code;
-  String name;
-  boolean mnc;
+  private String code;
+  private String name;
+  private boolean mnc;
 
   public Module() {
 
