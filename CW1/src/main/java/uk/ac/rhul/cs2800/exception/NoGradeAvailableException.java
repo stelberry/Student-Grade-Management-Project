@@ -7,4 +7,7 @@ public class NoGradeAvailableException extends Exception {
 
   private static final long serialVersionUID = 1L;
 
+  public NoGradeAvailableException(String string) {
+    super(string);
+  }
 }

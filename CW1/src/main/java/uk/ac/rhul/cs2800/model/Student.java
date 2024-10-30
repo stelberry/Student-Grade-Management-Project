@@ -93,7 +93,7 @@ public class Student {
     }
 
     if (count == 0) {
-      throw new NoGradeAvailableException();
+      throw new NoGradeAvailableException("No grades available for the student.");
     }
     return sum / count;
   }
@@ -114,7 +114,8 @@ public class Student {
         return;
       }
     }
-    throw new NoRegistrationException();
+    throw new NoRegistrationException(
+        "Student is not registered for this module: " + module.getName());
   }
 
   /**
@@ -128,7 +129,7 @@ public class Student {
     Grade grade = gradeMap.get(module);
 
     if (grade == null) {
-      throw new NoGradeAvailableException();
+      throw new NoGradeAvailableException("No grades available for the student.");
     }
     return grade;
   }
