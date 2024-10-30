@@ -5,8 +5,8 @@ package uk.ac.rhul.cs2800.model;
  */
 public class Grade {
 
-  int score;
-  public Module module;
+  private int score;
+  Module module;
 
   public Grade() {
 

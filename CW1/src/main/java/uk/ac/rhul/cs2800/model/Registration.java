@@ -5,20 +5,10 @@ package uk.ac.rhul.cs2800.model;
  */
 public class Registration {
 
-  private Module module;
-  private Student student;
+  Module module;
 
-  public Registration(Module module, Student student) {
+  public Registration(Module module) {
     this.module = module;
-    this.student = student;
-  }
-
-  public void setStudent(Student student) {
-    this.student = student;
-  }
-
-  public Student getStudent() {
-    return student;
   }
 
   public void setModule(Module module) {
