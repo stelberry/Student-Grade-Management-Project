@@ -87,7 +87,9 @@ public class Student {
    */
   public void addGrade(Grade grade) throws NoRegistrationException {
     Module module = grade.getModule();
+
     for (Registration registration : registrations) {
+
       if (registration.getModule().equals(module)) {
         gradeMap.put(module, grade);
         return;
@@ -105,6 +107,7 @@ public class Student {
    */
   public Grade getGrade(Module module) throws NoGradeAvailableException {
     Grade grade = gradeMap.get(module);
+
     if (grade == null) {
       throw new NoGradeAvailableException();
     }

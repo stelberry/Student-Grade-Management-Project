@@ -26,7 +26,6 @@ public class Module {
     this.mnc = mnc;
   }
 
-
   public String getCode() {
     return code;
   }

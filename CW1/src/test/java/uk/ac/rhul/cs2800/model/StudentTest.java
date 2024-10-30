@@ -2,20 +2,32 @@ package uk.ac.rhul.cs2800.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uk.ac.rhul.cs2800.exception.NoGradeAvailableException;
 import uk.ac.rhul.cs2800.exception.NoRegistrationException;
 
 public class StudentTest {
 
+  private Student student;
+  private Module module1;
+  private Module module2;
+  private Module module;
+
+  @BeforeEach
+  void setUp() {
+    // initialize common objects before each test
+    student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
+    module = new Module("101", "Software Engineering", true);
+    module1 = new Module("101", "Software Engineering", true);
+    module2 = new Module("102", "Databases", false);
+  }
+
   @Test
   void computeAverageTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 1
     // check that computeAverage method correctly calculates the average grade when grades are
     // availiable
-    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module1 = new Module("101", "Software Engineering", true);
-    Module module2 = new Module("102", "Databases", false);
     Grade grade1 = new Grade(80, module1);
     Grade grade2 = new Grade(80, module2);
 
@@ -33,7 +45,6 @@ public class StudentTest {
     // Test 2
     // verify that computeAverage throws a NoGradeAvailableException when there are no grades
     assertThrows(NoGradeAvailableException.class, () -> {
-      Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
       student.computeAverage();
     });
   }
@@ -42,8 +53,6 @@ public class StudentTest {
   void addGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 5
     // verify that addGrade correctly add a grade for the registered module
-    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module = new Module("101", "Software Engineering", true);
     Grade grade = new Grade(80, module);
 
     student.registerModule(module);
@@ -56,8 +65,6 @@ public class StudentTest {
   void getGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 6
     // check that getGrade correctly retrieves the grade for a specific module
-    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module = new Module("101", "Software Engineering", true);
     Grade grade = new Grade(80, module);
 
     student.registerModule(module);
@@ -70,7 +77,6 @@ public class StudentTest {
   void studentConstructorTest() {
     // Test 10
     // check that the Student object initializes with correct attributes
-    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     assertEquals(101064264L, student.getId());
     assertEquals("Yoon", student.getFirstName());
     assertEquals("Ei", student.getLastName());
@@ -83,8 +89,6 @@ public class StudentTest {
     // Test 11
     // check that adding a grade to an unregistered module throws NoRegistrationException
     assertThrows(NoRegistrationException.class, () -> {
-      Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-      Module module = new Module("101", "Software Engineering", true);
       Grade grade = new Grade(80, module);
 
       student.addGrade(grade);
@@ -95,11 +99,9 @@ public class StudentTest {
   void getGradeWithEmptyGradeTest() {
     // Test 12
     // verify that getGrade throws NoGradeAvailableException if no grade is available for the module
-    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module = new Module("101", "Software Engineering", true);
-    student.registerModule(module);
-
     assertThrows(NoGradeAvailableException.class, () -> {
+      student.registerModule(module);
+
       student.getGrade(module);
     });
   }
@@ -108,8 +110,6 @@ public class StudentTest {
   void computeAverageWithOneGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 13
     // check that computeAverage calculates the correct average when there is only one grade
-    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module = new Module("101", "Software Engineering", true);
     Grade grade = new Grade(75, module);
 
     student.registerModule(module);
@@ -122,14 +122,9 @@ public class StudentTest {
   void computeAverageWithMultipleRegistrationsButNoGradesTest() {
     // Test 14
     // check that computeAverage throws NoGradeAvailableException if no grade is available
-    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module1 = new Module("101", "Software Engineering", true);
-    Module module2 = new Module("102", "Databases", false);
-
-    student.registerModule(module1);
-    student.registerModule(module2);
-
     assertThrows(NoGradeAvailableException.class, () -> {
+      student.registerModule(module1);
+      student.registerModule(module2);
 
       student.computeAverage();
     });
@@ -141,9 +136,6 @@ public class StudentTest {
     // Test 15
     // check that getGrade correctly retrieves the grades for a registered module and
     // throws NoGradeAvailableException for the module with no grade added.
-    Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-    Module module1 = new Module("101", "Software Engineering", true);
-    Module module2 = new Module("102", "Databases", false);
     Grade grade = new Grade(85, module1);
 
     student.registerModule(module1);
@@ -164,8 +156,6 @@ public class StudentTest {
     // verify that getGrade throws NoGradeAvailableException when a null module is passed as the
     // parameter
     assertThrows(NoGradeAvailableException.class, () -> {
-      Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
-
       student.getGrade(null);
     });
   }
