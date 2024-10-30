@@ -11,6 +11,8 @@ public class StudentTest {
   @Test
   void computeAverageTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 1
+    // check that computeAverage method correctly calculates the average grade when grades are
+    // availiable
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Module module1 = new Module("101", "Software Engineering", true);
     Module module2 = new Module("102", "Databases", false);
@@ -29,6 +31,7 @@ public class StudentTest {
   @Test
   void computeAveragewithEmptyGradesTest() {
     // Test 2
+    // verify that computeAverage throws a NoGradeAvailableException when there are no grades
     assertThrows(NoGradeAvailableException.class, () -> {
       Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
       student.computeAverage();
@@ -38,6 +41,7 @@ public class StudentTest {
   @Test
   void addGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 5
+    // verify that addGrade correctly add a grade for the registered module
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Module module = new Module("101", "Software Engineering", true);
     Grade grade = new Grade(80, module);
@@ -51,6 +55,7 @@ public class StudentTest {
   @Test
   void getGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 6
+    // check that getGrade correctly retrieves the grade for a specific module
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Module module = new Module("101", "Software Engineering", true);
     Grade grade = new Grade(80, module);
@@ -62,8 +67,9 @@ public class StudentTest {
   }
 
   @Test
-  void studentTest() {
+  void studentConstructorTest() {
     // Test 10
+    // check that the Student object initializes with correct attributes
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     assertEquals(101064264L, student.getId());
     assertEquals("Yoon", student.getFirstName());
@@ -75,6 +81,7 @@ public class StudentTest {
   @Test
   void addGradeToUnregisteredModuleTest() {
     // Test 11
+    // check that adding a grade to an unregistered module throws NoRegistrationException
     assertThrows(NoRegistrationException.class, () -> {
       Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
       Module module = new Module("101", "Software Engineering", true);
@@ -87,6 +94,7 @@ public class StudentTest {
   @Test
   void getGradeWithEmptyGradeTest() {
     // Test 12
+    // verify that getGrade throws NoGradeAvailableException if no grade is available for the module
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Module module = new Module("101", "Software Engineering", true);
     student.registerModule(module);
@@ -99,6 +107,7 @@ public class StudentTest {
   @Test
   void computeAverageWithOneGradeTest() throws NoGradeAvailableException, NoRegistrationException {
     // Test 13
+    // check that computeAverage calculates the correct average when there is only one grade
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Module module = new Module("101", "Software Engineering", true);
     Grade grade = new Grade(75, module);
@@ -112,6 +121,7 @@ public class StudentTest {
   @Test
   void computeAverageWithMultipleRegistrationsButNoGradesTest() {
     // Test 14
+    // check that computeAverage throws NoGradeAvailableException if no grade is available
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Module module1 = new Module("101", "Software Engineering", true);
     Module module2 = new Module("102", "Databases", false);
@@ -129,6 +139,8 @@ public class StudentTest {
   void getGradeWithMultipleRegistrationsTest()
       throws NoRegistrationException, NoGradeAvailableException {
     // Test 15
+    // check that getGrade correctly retrieves the grades for a registered module and
+    // throws NoGradeAvailableException for the module with no grade added.
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Module module1 = new Module("101", "Software Engineering", true);
     Module module2 = new Module("102", "Databases", false);
@@ -149,6 +161,8 @@ public class StudentTest {
   @Test
   void getGradeWithNullModuleTest() {
     // Test 16
+    // verify that getGrade throws NoGradeAvailableException when a null module is passed as the
+    // parameter
     assertThrows(NoGradeAvailableException.class, () -> {
       Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
 

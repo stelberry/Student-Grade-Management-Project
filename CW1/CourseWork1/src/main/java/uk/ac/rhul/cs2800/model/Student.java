@@ -19,7 +19,7 @@ public class Student {
   public String email;
 
   List<Registration> registrations = new ArrayList<>();
-  private Map<Module, Grade> gradeMap = new HashMap<>();
+  Map<Module, Grade> gradeMap = new HashMap<>();
 
 
   /**
@@ -101,18 +101,14 @@ public class Student {
    *
    * @param module the module for which the grade is requested.
    * @return the grade for the specified module
-   * @throws NoGradeAvailableException if there is no grade available for the specified module
+   * @throws NoGradeAvailableException if there is no grade available
    */
   public Grade getGrade(Module module) throws NoGradeAvailableException {
-    for (Registration registration : registrations) {
-      if (registration.getModule().equals(module)) {
-        if (registration.getGrade() == null) {
-          throw new NoGradeAvailableException();
-        }
-        return registration.getGrade();
-      }
+    Grade grade = gradeMap.get(module);
+    if (grade == null) {
+      throw new NoGradeAvailableException();
     }
-    throw new NoGradeAvailableException();
+    return grade;
   }
 
   public void registerModule(Module module) {

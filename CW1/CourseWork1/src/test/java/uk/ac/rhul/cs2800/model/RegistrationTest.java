@@ -8,7 +8,6 @@ public class RegistrationTest {
   @Test
   void registrationTest() {
     // Test9
-    // Test: Ensure module is properly set during registration
     Module module = new Module("101", "Software Engineering", true);
     Student student = new Student(101064264L, "Yoon", "Ei", "yoonei", "yoonei@gmail.com");
     Registration registration = new Registration(module, student);
