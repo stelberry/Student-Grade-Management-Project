@@ -1,0 +1,36 @@
+stages:
+  - build
+  - test
+  - jacoco
+  - checkstyle
+  - spotbugs
+
+build:
+  stage: build
+  script:
+    - cd Lab/LabDemo
+    - mvn compile
+
+test:
+  stage: test
+  script:
+    - cd Lab/LabDemo
+    - mvn test
+
+jacoco:
+  stage: jacoco
+  script:
+    - cd Lab/LabDemo
+    - mvn verify
+
+checkstyle:
+  stage: checkstyle
+  script:
+    - cd Lab/LabDemo
+    - mvn checkstyle:check
+
+spotbugs:
+  stage: spotbugs
+  script:
+    - cd Lab/LabDemo
+    - mvn spotbugs:check

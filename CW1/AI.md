@@ -4,7 +4,7 @@ To learn specific Java syntax to improve your code.
 Permitted use of AI #2
 To learn specific use case of external libraries (e.g., Maven, JUnit, and Spring Boot)
 
-Permitted use of AI ##
+Permitted use of AI #3
 To learn git commands.
 
 Name: Copilot, ChatGPT 
