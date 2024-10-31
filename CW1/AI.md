@@ -18,7 +18,7 @@ My AI usage Examples:
 1. How to unpush, unstage, uncommit, merge, move the directory, see hidden files? and a bunch of other git commands.
 
 2. I didn't quite understand the branches and merging in general and struggled with branch part in the CW1 submission.
-So, I asked a bunch of questions. For example, is it possible to keep changes in the CW1 branch without merging?
+So, I asked a bunch of dumb questions. For example, is it possible to keep changes in the CW1 branch without merging?
 
 3. What is maven, JaCoCo, spotbugs? What exactly is Junit? 
 
