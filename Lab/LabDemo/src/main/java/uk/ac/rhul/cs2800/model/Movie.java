@@ -14,6 +14,7 @@ public class Movie {
   List<Rate> rates;
 
   List<PlayTime> playtimes;
+  String title;
 
   public Movie() {
     this.rates = new ArrayList<Rate>();
@@ -62,5 +63,16 @@ public class Movie {
     this.playtimes.add(playtime);
 
   }
+
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
 
 }
