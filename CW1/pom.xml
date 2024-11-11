@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>uk.ac.rhul.cs2800</groupId>
-  <artifactId>CourseWork1</artifactId>
+  <artifactId>CW1</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>CourseWork1</name>
+  <name>CW1</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
