@@ -5,6 +5,10 @@ stages:
   - checkstyle
   - spotbugs
 
+cache:
+  path:
+    - .m2/repository
+
 build:
   stage: build
   script:
