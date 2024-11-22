@@ -12,7 +12,8 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Module {
   @Id
-  @GeneratedValue
+  private String code;
+
 
   @OneToOne
   @JoinColumn(name = "grade_id")
@@ -22,7 +23,6 @@ public class Module {
   @JoinColumn(name = "registration_id")
   Registration registration;
 
-  private String code;
   private String name;
   private boolean mnc;
 
