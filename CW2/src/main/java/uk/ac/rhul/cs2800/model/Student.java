@@ -21,6 +21,7 @@ public class Student {
   @Id
   @GeneratedValue
   private Long id;
+
   private String firstName;
   private String lastName;
   private String username;
@@ -31,6 +32,10 @@ public class Student {
 
   @OneToMany(mappedBy = "student")
   List<Grade> grades = new ArrayList<>();
+
+  public Student() {
+
+  }
 
   /**
    * Constructs a new Student with details.
