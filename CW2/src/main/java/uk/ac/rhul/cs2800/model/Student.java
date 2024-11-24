@@ -1,7 +1,6 @@
 package uk.ac.rhul.cs2800.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import uk.ac.rhul.cs2800.exception.NoRegistrationException;
 @Entity
 public class Student {
   @Id
-  @GeneratedValue
   private Long id;
 
   private String firstName;
