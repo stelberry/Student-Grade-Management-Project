@@ -37,4 +37,8 @@ CREATE TABLE grade(
     REFERENCES student (id),
   FOREIGN KEY (module_code)
     REFERENCES module (code)
+<<<<<<< HEAD
 );
+=======
+);
+>>>>>>> parent of ff9ca13 (#5 add GradeController)
