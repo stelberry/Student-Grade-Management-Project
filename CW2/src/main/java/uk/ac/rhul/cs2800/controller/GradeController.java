@@ -12,6 +12,9 @@ import uk.ac.rhul.cs2800.repository.GradeRepository;
 import uk.ac.rhul.cs2800.repository.ModuleRepository;
 import uk.ac.rhul.cs2800.repository.StudentRepository;
 
+/**
+ * A rest controller handles grade instances.
+ */
 @RestController
 public class GradeController {
   private final GradeRepository gradeRepository;
@@ -20,7 +23,13 @@ public class GradeController {
 
   private final ModuleRepository moduleRepository;
 
-
+  /**
+   * GradeController with specified repositiories.
+   *
+   * @param gradeRepository the repository to handle grade entities
+   * @param studentRepository the repository to handle student entitiies
+   * @param moduleRepository the repository to handle module entities
+   */
   public GradeController(GradeRepository gradeRepository, StudentRepository studentRepository,
       ModuleRepository moduleRepository) {
     this.gradeRepository = gradeRepository;
@@ -28,6 +37,12 @@ public class GradeController {
     this.moduleRepository = moduleRepository;
   }
 
+  /**
+   * addGrade POST handler.
+   *
+   * @param params It should contain "student_id", "score" and "module_code"
+   * @return successfully saved grade object or exception
+   */
   @PostMapping(value = "/grades/addGrade")
   public ResponseEntity<Grade> addGrade(@RequestBody Map<String, String> params) {
 
