@@ -1,5 +1,8 @@
 package uk.ac.rhul.cs2800.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import uk.ac.rhul.cs2800.exception.NoGradeAvailableException;
@@ -8,15 +11,20 @@ import uk.ac.rhul.cs2800.exception.NoRegistrationException;
 /**
  * A class represents student.
  */
+@Entity
 public class Student {
-
+  @Id
   private Long id;
+
   private String firstName;
   private String lastName;
   private String username;
   private String email;
 
+  @OneToMany(mappedBy = "student")
   List<Registration> registrations = new ArrayList<>();
+
+  @OneToMany(mappedBy = "student")
   List<Grade> grades = new ArrayList<>();
 
   /**
