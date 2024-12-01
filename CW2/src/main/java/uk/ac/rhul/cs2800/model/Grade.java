@@ -20,7 +20,7 @@ public class Grade {
   @JoinColumn(name = "student_id")
   Student student;
 
-  private int score;
+  private Integer score;
 
   @OneToOne
   @JoinColumn(name = "module_code")
@@ -30,7 +30,7 @@ public class Grade {
 
   }
 
-  public Grade(int score, Module module) {
+  public Grade(Integer score, Module module) {
     this.score = score;
     this.module = module;
   }
@@ -39,7 +39,7 @@ public class Grade {
     return score;
   }
 
-  public void setScore(int score) {
+  public void setScore(Integer score) {
     this.score = score;
   }
 
@@ -51,4 +51,19 @@ public class Grade {
     return module;
   }
 
+  public void setStudent(Student student) {
+    this.student = student;
+  }
+
+  public Student getStudent() {
+    return student;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 }
