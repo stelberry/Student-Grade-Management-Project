@@ -1,11 +1,26 @@
 package uk.ac.rhul.cs2800.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+
 /**
  * A class represents a student module.
  */
+@Entity
 public class Module {
-
+  @Id
   private String code;
+
+  @OneToOne
+  @JoinColumn(name = "grade_id")
+  Grade grade;
+
+  @OneToOne
+  @JoinColumn(name = "registration_id")
+  Registration registration;
+
   private String name;
   private boolean mnc;
 
