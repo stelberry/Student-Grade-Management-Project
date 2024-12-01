@@ -13,6 +13,7 @@ public class GradeTest {
     grade.setModule(module);
     assertEquals(60, grade.getScore());
     assertEquals(module, grade.getModule());
+    assertEquals(null, grade.getId());
   }
 
   @Test
