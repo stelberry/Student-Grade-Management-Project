@@ -106,4 +106,3 @@ http://localhost:2800/swagger-ui.html
 - Push changes and create a Merge Request (MR) on GitLab.
 - Ensure CI/CD validation passes before merging into the main branch.
 
----
