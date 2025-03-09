@@ -1,7 +1,7 @@
 # Student Grade Management Program
 
 ## Overview
-The **Student Grade Management Program** is a system designed to manage student grades. The project was developed in two phases:
+This project was initially developed on **GitLab** and has been migrated to GitHub for showcasing. The **Student Grade Management Program** is a system designed to manage student grades. The project was developed in two phases:
 
 - **Coursework 1 (CW1):** Focused on implementing the core model classes with unit tests.
 - **Coursework 2 (CW2):** Extended CW1 into a backend service using Spring Boot, allowing interaction through a web API.
