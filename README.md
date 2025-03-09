@@ -1,7 +1,7 @@
 # Student Grade Management Program
 
 ## Overview
-The **Student Grade Management Program** is a system designed to manage student grades at Awesome University (a fictional university). The project was developed in two phases:
+The **Student Grade Management Program** is a system designed to manage student grades. The project was developed in two phases:
 
 - **Coursework 1 (CW1):** Focused on implementing the core model classes with unit tests.
 - **Coursework 2 (CW2):** Extended CW1 into a backend service using Spring Boot, allowing interaction through a web API.
@@ -107,12 +107,3 @@ http://localhost:2800/swagger-ui.html
 - Ensure CI/CD validation passes before merging into the main branch.
 
 ---
-
-## License
-This project is for educational purposes only and follows CS2800 coursework guidelines.
-
----
-
-## Author
-Developed as part of the **CS2800** module at **Royal Holloway, University of London**.
-
